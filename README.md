@@ -2,9 +2,9 @@
 
 This is a simple scaffolding project used to test libraries.
 
-The backend of this solution is [this project](https://github.com/alessandrodeste/nodejs-playground).
+The backend project is in [here](https://github.com/alessandrodeste/nodejs-playground).
 
-## Done
+## What you can find here
 
 - webpack 2
 - Bootstrap 3
@@ -25,7 +25,7 @@ Run application with webpack-dev-server
 npm run start
 ```
 
-## TODO
+## Wishlist
 
 - scss
 - test
