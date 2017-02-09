@@ -2,8 +2,6 @@
 
 This is a simple scaffolding project used to test libraries.
 
-The backend project is in [here](https://github.com/alessandrodeste/nodejs-playground).
-
 ## What you can find here
 
 - webpack 2
@@ -12,6 +10,8 @@ The backend project is in [here](https://github.com/alessandrodeste/nodejs-playg
 - CRUD Users collection (*work in progress*)
 
 ## How to use
+
+Install and start the [backend services](https://github.com/alessandrodeste/nodejs-playground)
 
 Install packages
 

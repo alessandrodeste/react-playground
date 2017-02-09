@@ -36,7 +36,7 @@ class Signin extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <Field name="email" component={this.renderField} type="text" label="First Name" />
+        <Field name="email" component={this.renderField} type="text" label="Email" />
         <Field name="password" component={this.renderField} type="password" label="Password" />
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign in</button>

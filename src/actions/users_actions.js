@@ -2,7 +2,8 @@ import axios from 'axios';
 import { ROOT_URL } from '../config.js'
 import {
   FETCH_USERS,
-  FETCH_USER
+  FETCH_USER,
+  UPDATE_USER
 } from './types';
 
 export function fetchUsers() {
@@ -27,6 +28,21 @@ export function fetchUser(userId) {
     .then(response => {
       dispatch({
         type: FETCH_USER,
+        payload: response.data
+      });
+    });
+  }
+}
+
+export function updateUser(userId, partialUser) {
+  return function(dispatch) {
+    axios.put(`${ROOT_URL}/api/secured/users/${userId}`, 
+      partialUser,{
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then(response => {
+      dispatch({
+        type: UPDATE_USER,
         payload: response.data
       });
     });
