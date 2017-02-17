@@ -57,7 +57,8 @@ export function newUser() {
         username: '',
         email: '',
         first_name: '',
-        family_name: ''
+        family_name: '',
+        role: 2
       }
     });
   }
