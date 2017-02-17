@@ -1,7 +1,8 @@
 import { noop } from 'lodash';
 import {  
   FETCH_USERS,
-  FETCH_USER
+  FETCH_USER,
+  NEW_USER
 } from '../actions/types';
 
 export default function(state = {}, action) {
@@ -9,6 +10,8 @@ export default function(state = {}, action) {
     case FETCH_USERS:
       return { ...state, list: action.payload, selected: noop() };
     case FETCH_USER:
+      return { ...state, selected: action.payload };
+    case NEW_USER:
       return { ...state, selected: action.payload };
   }
 

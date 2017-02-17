@@ -7,11 +7,14 @@ class Header extends Component {
     if (this.props.authenticated) {
       // show a link to sign out
       return [
-        <li className="nav-item" key={1}>
-          <Link className="nav-link" to="/signout">Sign Out {this.props.user.first_name}</Link>
-        </li>,
         <li className="nav-item" key={2}>
           <Link className="nav-link" to="/users">Users</Link>
+        </li>,
+        <li className="nav-item" key={3}>
+          <Link className="nav-link" to={"/users/" + this.props.user._id}>Account {this.props.user.username}</Link>
+        </li>,
+        <li className="nav-item" key={1}>
+          <Link className="nav-link" to="/signout">Sign Out</Link>
         </li>
       ];
     } else {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './components/App';
 import Signin from './components/auth/Signin';
@@ -13,7 +13,7 @@ import RequireAuth from './components/auth/RequireAuth';
 import Home from './components/home';
 
 export default (
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={RequireAuth(Home)} />
       <Route path="signin" component={Signin} />
@@ -21,6 +21,7 @@ export default (
       <Route path="signup" component={Signup} />
       <Route path="users" >
         <IndexRoute component={RequireAuth(UserList)} />
+        <Route path="new" component={RequireAuth(UsersDetail)} />
         <Route path=":id" component={RequireAuth(UsersDetail)} />
       </Route>
     </Route>

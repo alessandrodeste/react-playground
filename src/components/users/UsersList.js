@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { usersActions } from '../../actions';
 import _ from 'lodash';
+import { hashHistory } from 'react-router';
 
 class UsersList extends Component {
   componentWillMount() {
@@ -24,6 +25,10 @@ class UsersList extends Component {
     );
   }
 
+  onClickNew() {
+    hashHistory.push('/users/new');
+  }
+
   render() {
     if (!this.props.users)
       return (
@@ -31,9 +36,15 @@ class UsersList extends Component {
       );
       
     return (
-      <div>
-        <h3>Users List</h3>
+      <div className="users-list">
+        <h3>
+          Users List
+        </h3>
 
+        <button type="button" onClick={this.onClickNew} className="btn btn-link">
+          <span className="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
+        </button>
+        
         <table className="table table-striped table-hover">
           <thead>
           <tr>  

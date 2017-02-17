@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -33,7 +33,7 @@ export function signupUser({ email, password }) {
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
-        browserHistory.push('/');
+        hashHistory.push('/');
       })
       .catch(response => dispatch(authError(response.data.error)));
   }
@@ -52,7 +52,7 @@ export function getLoggedUser(dispatch) {
     });
 
     // Redirect to default entry point
-    browserHistory.push('/');
+    hashHistory.push('/');
   })
   .catch(() => {
     // Something went wrong, remove the token
