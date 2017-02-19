@@ -6,27 +6,45 @@ import _ from 'lodash';
 import { hashHistory } from 'react-router';
 
 class UsersList extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
   componentWillMount() {
     this.props.fetchUsers();
+  }
+
+  onClickRemove(user) {
+    var r = confirm("Confirm to remove user " + user.email + "?");
+    if (r == true) {      
+      this.props.deleteUser(user._id);
+    }
+  }
+
+  onClickNew() {
+    hashHistory.push('/users/new');
   }
 
   renderUser(user) {
     return (
       <tr key={user._id}>
-        <td className="text-center">
+        <td className="text-center actions">
           <Link to={"users/" + user._id}>
             <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
           </Link>
+          {
+            this.props.authenticatedUser._id !== user._id ? 
+            <Link onClick={() => this.onClickRemove(user)}>
+              <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </Link> :
+            _.noop()
+          }
         </td>
         <td>{user.email}</td>
         <td>{user.first_name}</td>
         <td>{user.family_name}</td>
       </tr>
     );
-  }
-
-  onClickNew() {
-    hashHistory.push('/users/new');
   }
 
   render() {
@@ -64,7 +82,10 @@ class UsersList extends Component {
 }
 
 function mapStateToProps(state) {
-  return { users: state.users.list };
+  return { 
+    users: state.users.list,
+    authenticatedUser: state.auth.user
+  };
 }
 
 export default connect(mapStateToProps, usersActions)(UsersList);

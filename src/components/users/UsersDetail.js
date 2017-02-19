@@ -99,6 +99,14 @@ class UserDetail extends Component {
 function validate(formProps) {
   const errors = {};
 
+  if (!formProps.username) {
+    errors.username = 'Please enter a username';
+  }
+
+  if (!formProps.email) {
+    errors.email = 'Please enter a email';
+  }
+
   if (!formProps.first_name) {
     errors.first_name = 'Please enter a first name';
   }

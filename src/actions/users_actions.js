@@ -2,11 +2,12 @@ import axios from 'axios';
 import { hashHistory } from 'react-router';
 import { ROOT_URL } from '../config.js'
 import {
-  FETCH_USERS,
-  FETCH_USER,
-  NEW_USER,
-  UPDATE_USER,
-  CREATED_USER
+  USERS_FETCH,
+  USER_FETCH,
+  USER_NEW,
+  USER_UPDATE,
+  USER_CREATED,
+  USER_DELETED
 } from './types';
 
 export function fetchUsers() {
@@ -16,7 +17,7 @@ export function fetchUsers() {
     })
     .then(response => {
       dispatch({
-        type: FETCH_USERS,
+        type: USERS_FETCH,
         payload: response.data
       });
     })
@@ -34,7 +35,7 @@ export function fetchUser(userId) {
     })
     .then(response => {      
       dispatch({
-        type: FETCH_USER,
+        type: USER_FETCH,
         payload: response.data
       });
     }) 
@@ -52,7 +53,7 @@ export function fetchUser(userId) {
 export function newUser() {
   return function(dispatch) {
     dispatch({
-      type: NEW_USER,
+      type: USER_NEW,
       payload: {
         username: '',
         email: '',
@@ -72,7 +73,7 @@ export function updateUser(userId, partialUser) {
     })
     .then(response => {
       dispatch({
-        type: UPDATE_USER,
+        type: USER_UPDATE,
         payload: response.data
       });
     }) 
@@ -91,8 +92,26 @@ export function createUser(user) {
     })
     .then(response => {
       dispatch({
-        type: CREATED_USER,
+        type: USER_CREATED,
         payload: response.data
+      });
+    }) 
+    .catch(function (error) {
+      // TODO
+      console.log(error);
+    });
+  }
+}
+
+export function deleteUser(userId) {
+  return function(dispatch) {
+    axios.delete(`${ROOT_URL}/api/secured/users/${userId}`, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+    .then(response => {
+      dispatch({
+        type: USER_DELETED,
+        payload: userId
       });
     }) 
     .catch(function (error) {

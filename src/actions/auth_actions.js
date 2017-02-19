@@ -2,7 +2,7 @@ import axios from 'axios';
 import { hashHistory } from 'react-router';
 import {
   AUTH_USER,
-  UNAUTH_USER,
+  AUTH_SIGNOUT,
   AUTH_ERROR
 } from './types';
 import { ROOT_URL } from '../config.js'
@@ -72,5 +72,5 @@ export function authError(error) {
 export function signoutUser() {
   localStorage.removeItem('token');
 
-  return { type: UNAUTH_USER };
+  return { type: AUTH_SIGNOUT };
 }

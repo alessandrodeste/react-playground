@@ -5,3 +5,8 @@
 form button {
   margin-right: 15px;
 }
+
+.users-list td.actions a {
+  margin-right: 15px;
+  cursor: pointer;
+}
