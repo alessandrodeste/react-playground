@@ -7,7 +7,8 @@ This is a simple scaffolding project used to test libraries.
 - webpack 2
 - Bootstrap 3
 - react 15 and react-form 6
-- CRUD Users collection (*work in progress*)
+- Login/Signup Form
+- CRUD Users collection
 
 ## How to use
 
@@ -35,6 +36,7 @@ npm run start
 - i18n
 - refresh without losing the path
 - yarn
+- ...
 
 ## Thank you
 
