@@ -10,7 +10,7 @@ import UserList from './components/users/UsersList';
 import UsersDetail from './components/users/UsersDetail';
 
 import RequireAuth from './components/auth/RequireAuth';
-import Home from './components/home';
+import Home from './components/Home';
 
 export default (
   <Router history={hashHistory}>
